@@ -4,11 +4,14 @@ pipeline {
             label 'maven'
         }
     }
+environment {
+    PATH = "/opt/apache-maven-3.9.5/bin:$PATH"
+}
 
     stages {
-        stage('Clone-Code') {
+        stage('Build') {
             steps {
-                git branch: 'main', url: 'https://github.com/Abhinandan14/test'
+                sh 'mvn clen deploy'
             }
         }
     }
